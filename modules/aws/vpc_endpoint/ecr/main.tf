@@ -15,7 +15,7 @@ resource random_id sg {
 
 resource aws_security_group "tag" {
   vpc_id = "${var.vpc_id}"
-  name_prefix = "${local.prefix}endpoint_ecr"
+  name_prefix = "${local.prefix}endpoint_ecr-"
 
   tags = {
     managed-by = "Terraform"

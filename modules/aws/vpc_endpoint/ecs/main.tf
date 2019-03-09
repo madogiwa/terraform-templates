@@ -11,13 +11,13 @@ locals {
 
 resource aws_security_group "tag" {
   vpc_id = "${var.vpc_id}"
-  name_prefix = "${local.prefix}endpoint_ecr"
+  name_prefix = "${local.prefix}endpoint_ecs-"
 
   tags = {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}endpoint_ecr"
+    Name = "${local.prefix}endpoint_ecs"
   }
 }
 
