@@ -29,7 +29,6 @@ module "subnet_local" {
   source = "../subnet_local"
 
   vpc_id = "${aws_vpc.main.id}"
-  vpc_name = "${aws_vpc.main.tags.Name}"
   number_of_subnet = "${var.number_of_subnet}"
   cidr_block = "${cidrsubnet(aws_vpc.main.cidr_block, 2, 2)}"
   ipv6_cidr_block = "${cidrsubnet(aws_vpc.main.ipv6_cidr_block, (8 - local.newbits), 2)}"

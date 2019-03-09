@@ -27,7 +27,7 @@ resource aws_subnet "public" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-public-${count.index + 1}"
+    Name = "${local.prefix}public-${count.index + 1}"
     SubnetType = "public"
   }
 }
@@ -39,7 +39,7 @@ resource aws_route_table "public" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-public"
+    Name = "${local.prefix}public"
     SubnetType = "public"
   }
 }

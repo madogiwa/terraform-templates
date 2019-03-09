@@ -27,7 +27,7 @@ resource aws_subnet "local" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-local-${count.index + 1}"
+    Name = "${local.prefix}local-${count.index + 1}"
     SubnetType = "local"
   }
 }
@@ -39,7 +39,7 @@ resource aws_route_table "local" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-local"
+    Name = "${local.prefix}local"
     SubnetType = "local"
   }
 }

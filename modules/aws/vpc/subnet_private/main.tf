@@ -27,7 +27,7 @@ resource aws_subnet "private" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-private-${count.index + 1}"
+    Name = "${local.prefix}private-${count.index + 1}"
     SubnetType = "private"
   }
 }
@@ -76,7 +76,7 @@ resource aws_route_table "private" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
 
-    Name = "${local.prefix}${var.vpc_name}-private-${count.index + 1}"
+    Name = "${local.prefix}private-${count.index + 1}"
     SubnetType = "private"
   }
 }

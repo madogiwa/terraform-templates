@@ -8,10 +8,6 @@ variable vpc_id {
   description = "VPC id"
 }
 
-variable vpc_name {
-  description = "VPC name"
-}
-
 variable cidr_block {
   description = "CIDR block for subnet"
 }
