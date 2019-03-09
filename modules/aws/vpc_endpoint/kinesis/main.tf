@@ -30,14 +30,14 @@ resource aws_security_group "tag" {
 }
 
 resource aws_security_group "allow" {
-  count = "${var.allow_from_all == true ? 1 : 0}"
+  count = "${var.allow_from_all ? 1 : 0}"
   vpc_id = "${var.vpc_id}"
 
   ingress {
     protocol = "-1"
     from_port = 0
-    to_port = 65535
-    cidr_blocks = ["0.0.0.0"]
+    to_port = 0
+    cidr_blocks = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
 
