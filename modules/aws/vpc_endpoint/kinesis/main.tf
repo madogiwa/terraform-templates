@@ -23,6 +23,10 @@ resource aws_security_group "tag" {
 
     Name = "${local.prefix}endpoint_kinesis"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource aws_security_group "allow" {
