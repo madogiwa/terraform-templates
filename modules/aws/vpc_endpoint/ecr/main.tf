@@ -45,6 +45,10 @@ resource aws_security_group "allow" {
     managed-by = "Terraform"
     terraform-workspace = "${terraform.workspace}"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource aws_vpc_endpoint "api" {
@@ -54,7 +58,7 @@ resource aws_vpc_endpoint "api" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids = ["${var.subnet_ids}"]
-  security_group_ids = ["${aws_security_group.tag.id}"]
+  security_group_ids = ["${aws_security_group.tag.id}", "${aws_security_group.allow.*.id}"]
 }
 
 resource aws_vpc_endpoint "dkr" {
@@ -64,7 +68,7 @@ resource aws_vpc_endpoint "dkr" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids = ["${var.subnet_ids}"]
-  security_group_ids = ["${aws_security_group.tag.id}"]
+  security_group_ids = ["${aws_security_group.tag.id}", "${aws_security_group.allow.*.id}"]
 
   depends_on = ["aws_vpc_endpoint.api"]
 }
