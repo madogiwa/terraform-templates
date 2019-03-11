@@ -55,9 +55,16 @@ data aws_iam_policy_document "mfa" {
     actions = [
       "iam:ListMFADevices",
       "iam:ListVirtualMFADevices",
+    ]
+    resources = ["arn:aws:iam::${data.aws_caller_identity.self.account_id}:mfa/"]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
       "iam:ListUsers"
     ]
-    resources = ["*"]
+    resources = ["arn:aws:iam::${data.aws_caller_identity.self.account_id}:user/"]
   }
 }
 
