@@ -59,6 +59,16 @@ data aws_iam_policy_document "mfa" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:ChangePassword"
+    ]
+    resources = [
+      "arn:aws:iam::${data.aws_caller_identity.self.account_id}:user/${var.name}"
+    ]
+  }
 }
 
 resource aws_iam_policy "mfa" {
